@@ -1,26 +1,45 @@
 import React, { useState } from 'react'
-import { MdOutlineArrowForwardIos } from 'react-icons/md';
+import { MdOutlineArrowForwardIos } from 'react-icons/md'
 
 const CategoryCard = ({ categorie }) => {
   const [isHover, setHover] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   return (
-    <button onMouseEnter={()=> setHover(true)} onMouseLeave={()=> setHover(false)} className="flex flex-col columns-3 items-center md:justify-start mx-2 my-4 group">
-      <a href="/"  className='overflow-hidden'>
-        <img
-          className="w-96 h-52 object-cover  transition ease-in-out  delay-75 group-hover:translate-y-px hover:scale-x-105 duration-1000 rounded-t-lg"
-          src={categorie.image}
-          alt=""
-        />
-      </a>
-      <div className="flex justify-between w-full py-2 px-5 rounded-b-lg bg-backgroundBlack group-hover:bg-primaryColor">
-      <div className="text-sm text-start text-white ">{categorie.name}</div>
-    <div className="flex items-center">
-    <div className={`${isHover ? "flex" : "hidden"} text-sm text-white`}>Alışverişe Başla</div>
-      <MdOutlineArrowForwardIos  className={`${isHover ? "flex" : "hidden"} text-sm text-white`}/>
+  
+    <div className="max-w-[1200px] mx-auto  ">
+  <div className="flex justify-start">
+    <div className="group inline-block relative ">
+      <button className="text-gray-700 font-semibold rounded inline-flex items-center  mx-4">
+        <div
+          className="font-semibold text-sm hover:text-orange-600 hover:underline hover:underline-offset-4 hover:decoration-[3px] "
+        >
+          {categorie.name}
+        </div>
+      </button>
+      <ul className="absolute right-0 hidden text-gray-700 pt-1 group-hover:block w-full  bg-red-400">
+        <li className="">
+          <a
+            className="rounded-t hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+            href="/"
+          >
+            One
+          </a>
+        </li>
+        <li className="">
+          <a
+            className="hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+            href="/"
+          >
+            Two
+          </a>
+        </li>
+      </ul>
     </div>
-      </div>
-    </button>
-)
+  </div>
+</div>
+
+
+  )
 }
 
 export default CategoryCard

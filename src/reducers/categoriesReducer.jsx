@@ -3,7 +3,7 @@ import { instance } from "../constants/axios";
 
 export const getCategories = createAsyncThunk("getCategories", async () => {
   console.log("aaaaas")
-  const {data} = await instance.get("/categories");
+  const {data} = await instance.get("/category");
   return data;
 } )
 

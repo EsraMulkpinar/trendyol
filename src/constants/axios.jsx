@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL:"https://api.escuelajs.co/api/v1",
+    baseURL:"http://localhost:5000/",
+})
 
+instance.interceptors.response.use((response) => {
+  return response.data
 })
