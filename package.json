@@ -12,7 +12,9 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
+    "v5": "^0.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
