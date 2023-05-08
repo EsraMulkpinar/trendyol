@@ -16,7 +16,7 @@ const MerchantProduct = () => {
   }
   console.log(currentMerchant)
   if (currentMerchant) {
-    return (
+  return (
       <div className="w-[1220px] m-auto">
         <button
           onClick={() => {
