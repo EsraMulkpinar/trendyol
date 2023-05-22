@@ -1,12 +1,13 @@
-import './App.css'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import CategoryProduct from './pages/CategoryProduct'
-import MerchantProduct from './pages/MerchantProduct'
-import LoginPage from './pages/LoginPage'
-import Header from './components/layout/header/header'
-import Footer from './components/layout/footer/footer'
-import RegisterPage from './pages/RegisterPage'
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import CategoryProduct from "./pages/CategoryProduct";
+import MerchantProduct from "./pages/MerchantProduct";
+import LoginPage from "./pages/LoginPage";
+import Header from "./components/layout/header/header";
+import Footer from "./components/layout/footer/footer";
+import RegisterPage from "./pages/RegisterPage";
+import Products from "./pages/Products";
 function App() {
   return (
     <div className="App ">
@@ -18,6 +19,9 @@ function App() {
           <Switch>
             <Route path="/category">
               <CategoryProduct />
+            </Route>
+            <Route path="/products">
+              <Products />
             </Route>
             <Route path="/merchant/:id">
               <MerchantProduct />
@@ -38,7 +42,7 @@ function App() {
         </div>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
