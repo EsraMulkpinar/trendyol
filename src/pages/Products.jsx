@@ -8,12 +8,12 @@ const Products = () => {
   const dispatch = useDispatch();
   const { filterProducts } = useSelector((state) => state.products);
   useEffect(() => {
-    dispatch(getFilterProducts(location.state.name));
-  }, [dispatch, location.state.name]);
+    dispatch(getFilterProducts(location.state?.name || ""));
+  }, [dispatch, location]);
 
   return (
     <div>
-      {filterProducts.map((product, index) => (
+      {filterProducts?.map((product, index) => (
         <div key={index}>{product.name}</div>
       ))}
     </div>
