@@ -1,8 +1,6 @@
-import React from 'react'
-import Categories from '../components/section/Categories'
-import Merchants from '../components/section/Merchants'
-import Header from '../components/layout/header/header'
-import Footer from '../components/layout/footer/footer'
+import React from "react";
+import Categories from "../components/section/Categories";
+import Merchants from "../components/section/Merchants";
 
 const HomePage = () => {
   return (
@@ -10,7 +8,7 @@ const HomePage = () => {
       <Categories />
       <Merchants />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

@@ -1,9 +1,8 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../reducers/authReducer';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../reducers/authReducer";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -12,49 +11,32 @@ const LoginPage = () => {
   const loginStatus = useSelector((state) => state.auth.loginStatus);
   const error = useSelector((state) => state.auth.error);
 
-  const handleLogin = async (values) => {
-    try {
-      await dispatch(login(values));
-      if (loginStatus === 'succeseded') {
-        history.push('/');
-        console.log(values);
-      }
-    } catch (error) {
-      console.log('Kullanıcı doğrulama hatası:', error);
-    }
-  };
-
   return (
     <div className="text-start flex flex-col items-center justify-center my-20 bg-gray-100">
-      <div className='text-2xl'>Merhaba,</div>
-      <div className='mb-4'>Trendyol’a giriş yap veya hesap oluştur, indirimleri kaçırma!</div>
+      <div className="text-2xl">Merhaba,</div>
+      <div className="mb-4">
+        Trendyol’a giriş yap veya hesap oluştur, indirimleri kaçırma!
+      </div>
       <div className="bg-white shadow-md border border-borderColor rounded-md px-8 pt-6 pb-8 w-1/3">
         <h2 className="text-2xl font-bold mb-4">Giriş Yap</h2>
-        {loginStatus === 'loading' && <div>Giriş yapılıyor...</div>}
-      {loginStatus === 'succeseded' && <div>Giriş başarılı!</div>}
-      {loginStatus === 'failed' && <div>Giriş başarısız. Hata: {error}</div>}
-     
+
         <Formik
           initialValues={{
-            email: '',
-            password: ''
+            email: "",
+            password: "",
           }}
-          validate={(values) => {
-            const errors = {};
-            // İstediğiniz doğrulama mantığını buraya ekleyebilirsiniz
-            if (!values.email) {
-              errors.email = 'Email alanı boş bırakılamaz';
-            }
-            if (!values.password) {
-              errors.password = 'Şifre alanı boş bırakılamaz';
-            }
-            return errors;
+          onSubmit={(values) => {
+            dispatch(login(values))
+              .unwrap()
+              .then(() => history.push("/"));
           }}
-          onSubmit={handleLogin}
         >
           <Form>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
                 Email
               </label>
               <Field
@@ -62,10 +44,17 @@ const LoginPage = () => {
                 type="text"
                 name="email"
               />
-              <ErrorMessage name="email" component="div" className="text-red-500 text-xs mt-1" />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="text-red-500 text-xs mt-1"
+              />
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
                 Şifre
               </label>
               <Field
@@ -73,7 +62,11 @@ const LoginPage = () => {
                 type="password"
                 name="password"
               />
-              <ErrorMessage name="password" component="div" className="text-red-500 text-xs mt-1" />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="text-red-500 text-xs mt-1"
+              />
             </div>
             <div className="flex items-center justify-between">
               <button
@@ -93,7 +86,7 @@ const LoginPage = () => {
         </Formik>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

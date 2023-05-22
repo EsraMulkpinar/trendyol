@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdFavoriteBorder } from "react-icons/md";
 import { SlBasket } from "react-icons/sl";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoginSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,9 +18,14 @@ const LoginSection = () => {
           className="group space-x-1 flex items-center cursor-grabbing "
         >
           <AiOutlineUser className="group-hover:fill-primaryColor" />
-          <div className="group-hover:text-primaryColor">Hesabım</div>
+
+          <div className="group-hover:text-primaryColor">
+            {localStorage.getItem("token") ? "Hesabım" : "Giriş Yap"}
+          </div>
         </button>
-        {isMenuOpen && (
+        {isMenuOpen && localStorage.getItem("token") ? (
+          <div>login dropdown</div>
+        ) : (
           <div className="absolute top-16 -ml-24 my-2 bg-white rounded border p-4 z-20">
             <ul className="list-none">
               <Link to="/login">
