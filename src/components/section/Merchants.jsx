@@ -18,7 +18,7 @@ const Merchants = () => {
         {merchants
           ? merchants.map((merchant, key) => {
               return (
-                <Link to={`/merchant/${merchant.id}`}>
+                <Link key={key} to={`/merchant/${merchant.id}`}>
                   <div className="flex flex-wrap" key={key}>
                     <MerchantCard merchant={merchant} />
                   </div>

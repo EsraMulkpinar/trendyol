@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCategories } from '../../reducers/categoriesReducer'
-import CategoryCard from '../common/CategoryCard'
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 const Categories = () => {
   return (
@@ -9,7 +6,7 @@ const Categories = () => {
       <div className=" flex flex-col items-center ">
         <div className="container max-w-[1220px] ">
           
-          <div className="flex justify-between mx-2 mt-20 mb-5">
+          <div className="flex justify-between mx-2 my-5">
             <a href="">
               <img
                 src="https://cdn.dsmcdn.com/mnresize/500/500/marketing/datascience/automation/2022/6/29/SepeteEnCOkEklenenler_202206291435.png"

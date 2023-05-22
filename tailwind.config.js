@@ -10,6 +10,13 @@ module.exports = {
         grayColor:"#f3f3f3",
         backgroundBlack:"#1b1b1b",
         grayBgColor:"#2D2D2D",
+        shadowColor:"#ebebeb",
+        borderColor:"#E6E6E6",
+        grayTextColor:"#333333",
+        hoverButton:"#ff8b39",
+      }, 
+      borderWidth: {
+        DEFAULT: '1px',
       }
     },
   },

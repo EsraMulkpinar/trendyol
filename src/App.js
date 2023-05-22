@@ -1,15 +1,20 @@
 import './App.css'
-import Footer from './components/layout/footer/footer'
-import Header from './components/layout/header/header'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import CategoryProduct from './pages/CategoryProduct'
 import MerchantProduct from './pages/MerchantProduct'
+import LoginPage from './pages/LoginPage'
+import Header from './components/layout/header/header'
+import Footer from './components/layout/footer/footer'
+import RegisterPage from './pages/RegisterPage'
 function App() {
   return (
     <div className="App ">
       <Router>
-        <div>
+        <div className="App">
+          <header>
+            <Header />
+          </header>
           <Switch>
             <Route path="/category">
               <CategoryProduct />
@@ -17,10 +22,19 @@ function App() {
             <Route path="/merchant/:id">
               <MerchantProduct />
             </Route>
+            <Route path="/signin">
+              <RegisterPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
             <Route path="/">
               <HomePage />
             </Route>
           </Switch>
+          <footer>
+            <Footer />
+          </footer>
         </div>
       </Router>
     </div>
