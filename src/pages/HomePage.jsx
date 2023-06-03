@@ -1,11 +1,11 @@
 import React from "react";
-import Categories from "../components/section/Categories";
 import Merchants from "../components/section/Merchants";
+import Banner from "../components/section/Banner";
 
 const HomePage = () => {
   return (
     <div>
-      <Categories />
+      <Banner />
       <Merchants />
     </div>
   );

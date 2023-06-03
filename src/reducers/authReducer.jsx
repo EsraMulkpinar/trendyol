@@ -13,38 +13,29 @@ export const login = createAsyncThunk("login", async (credentials) => {
     throw new Error("Kullanıcı doğrulama hatası");
   }
 });
+export const logout = createAsyncThunk("logout",async () => {
+  const { data } = await instance.get("/auth/logout");
+  return data;
+})
 
 const authReducer = createSlice({
   name: "auth",
   initialState: {
     registerUser: null,
-    loginUser: null,
-    isAuthenticated: false,
     loginStatus: "idle",
   },
-  // reducers: {
-  //     logout(state) {
-  //       state.registerUser = null;
-  //       state.isAuthenticated = false;
-  //     },
-  //   },
   extraReducers: ({ addCase }) => {
     addCase(register.fulfilled, (state, action) => {
       state.registerUser = action.payload;
       console.log(action.payload);
     });
-    addCase(login.pending, (state) => {
-      state.loginStatus = "loading";
-      state.error = null;
-    });
     addCase(login.fulfilled, (state, action) => {
       localStorage.setItem("token", action.payload.token);
     });
-    addCase(login.rejected, (state, action) => {
-      state.loginStatus = "failed";
-      state.error = action.error.message;
-      state.registerUser = null;
-    });
+    addCase(logout.fulfilled,() => {
+      alert("sadfdg")
+      localStorage.removeItem("token")
+    })
   },
 });
 

@@ -4,6 +4,9 @@ import { getCategories } from "../../../reducers/categoriesReducer";
 import { useDispatch, useSelector } from "react-redux";
 import FilterSection from "../../section/FilterSection";
 import LoginSection from "../../section/LoginSection";
+import { MdFavoriteBorder } from "react-icons/md";
+import { SlBasket } from "react-icons/sl";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
   const [openedIndex, setopenedIndex] = useState(null);
@@ -12,6 +15,15 @@ const Header = () => {
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+  const history = useHistory();
+
+  const favoritesPagePush = () => {
+    history.push("/favorites")
+  }
+  const basketPagePush = () => {
+    history.push("/basket")
+  }
+
   return (
     <div className="max-w-[1200px] mx-auto">
       <div className="flex justify-between items-center mt-7">
@@ -24,6 +36,14 @@ const Header = () => {
         </a>
         <FilterSection />
         <LoginSection />
+        <button className="flex items-center space-x-1 group cursor-grabbing">
+          <MdFavoriteBorder className="group-hover:fill-primaryColor" />
+          <div onClick={favoritesPagePush} className="text-sm group-hover:text-primaryColor">Favorilerim</div>
+        </button>
+        <button className="flex items-center space-x-1 group cursor-grabbing">
+          <SlBasket className="group-hover:fill-primaryColor" />
+          <div onClick={basketPagePush} className="text-sm group-hover:text-primaryColor">Sepetim</div>
+        </button>
       </div>
       <div className="flex  justify-start flex-wrap relative">
         {categories &&

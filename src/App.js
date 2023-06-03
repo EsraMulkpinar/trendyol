@@ -8,6 +8,9 @@ import Header from "./components/layout/header/header";
 import Footer from "./components/layout/footer/footer";
 import RegisterPage from "./pages/RegisterPage";
 import Products from "./pages/Products";
+import BasketPage from "./pages/BasketPage";
+import FavoritesPage from "./pages/FavoritesPage";
+import PaymentPage from "./pages/PaymentPage";
 function App() {
   return (
     <div className="App ">
@@ -31,6 +34,15 @@ function App() {
             </Route>
             <Route path="/login">
               <LoginPage />
+            </Route>
+            <Route path="/basket">
+              <BasketPage />
+            </Route>
+            <Route path="/favorites">
+              <FavoritesPage />
+            </Route>
+            <Route path="/payment">
+              <PaymentPage />
             </Route>
             <Route path="/">
               <HomePage />

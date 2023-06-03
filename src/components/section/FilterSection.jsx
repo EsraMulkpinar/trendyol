@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const { products, filterProducts } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.products);
   const [filterName, setFilterName] = useState("");
   const history = useHistory();
 
