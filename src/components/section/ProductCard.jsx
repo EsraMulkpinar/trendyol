@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
 import { addToFavorites, getFavorites, removeFavorites } from '../../reducers/favoritesReducer';
-const MerchantProductCard = ({ product }) => {
+const ProductCard = ({ product }) => {
     const dispatch = useDispatch()
-    const [isAdded, setisAdded] = useState(false)
+    const [isAdded, setisAdded] = useState()
     useEffect(() => {
-        dispatch(getFavorites())
-    }, [])
-    const { favorites } = useSelector((state) => state.favorites)
-    console.log(favorites);
+        if (!product.isFavorited) setisAdded(false)
+        else setisAdded(true)
+    }, [product.isFavorited])
+
     return (
         <div className="relative text-left border border-borderColor rounded-lg" >
-            {favorites?.forEach((favorite, index) => {
-                if (favorite.id === product.id&&isAdded) {
-                    console.log("Selam");
-                }
-            })}
-            {isAdded ?
+            {(product.isFavorited && isAdded) ?
                 <div className="absolute z-10 right-2 top-2 ">
                     <button className='rounded-full bg-white p-2 border'>
                         <AiFillHeart onClick={() => {
-                            setisAdded(!isAdded)
-                            dispatch(addToFavorites({ product_id: product.id }))
+                            setisAdded(false)
+                            dispatch(removeFavorites(product.id)).then(() => dispatch(getFavorites()))
                         }}
                             className='text-primaryColor' size={25} />
                     </button>
@@ -30,8 +25,8 @@ const MerchantProductCard = ({ product }) => {
                 : <div className="absolute z-10 right-2 top-2 ">
                     <button className='rounded-full bg-white p-2 border'>
                         <AiOutlineHeart onClick={() => {
-                            dispatch(removeFavorites({ product_id: product.id }))
-                            setisAdded(!isAdded)
+                            dispatch(addToFavorites({ product_id: product.id })).then(() => dispatch(getFavorites()))
+                            setisAdded(true)
                         }} className='text-grayBgColor hover:text-primaryColor ' size={25} /></button>
                 </div>
             }
@@ -44,4 +39,4 @@ const MerchantProductCard = ({ product }) => {
     )
 }
 
-export default MerchantProductCard
+export default ProductCard

@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
+import MerchantProductCard from '../components/section/ProductCard';
 import { getFavorites } from '../reducers/favoritesReducer';
 const FavoritesPage = () => {
   const dispatch = useDispatch()
@@ -17,22 +18,7 @@ const FavoritesPage = () => {
       </div>
       <div className='grid grid-cols-4  gap-4' >
       {
-        favorites?.map((favorite, index) =>
-            <div className="relative col-span-1 text-left border border-borderColor rounded-lg" key={index} >
-              <div className="absolute z-10 right-2 top-2 ">
-                <button className='rounded-full bg-white p-2 border'> <AiOutlineHeart className='text-grayBgColor hover:text-primaryColor' size={25} /></button>
-              </div>
-              <img className='w-full h-80 object-cover' src='https://picsum.photos/200/300' alt="" />
-              <div className="flex items-center">
-                <div className="p-4">
-                  <div className="line-clamp-2">{favorite.product.merchant.name} <div>{favorite.product.name}</div></div>
-                  <div className="">{favorite.product.price}</div>
-                </div>
-                <button className='px-3 py-1 border border-primaryColor rounded-lg text-primaryColor'>Sepete Ekle</button>
-
-              </div>
-            </div>
-        )
+        favorites?.map((fav) => <MerchantProductCard product={{...fav.product, isFavorited:true}} key={fav.id} />)
       }
       </div>
     </div>

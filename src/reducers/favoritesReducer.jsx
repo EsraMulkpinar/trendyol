@@ -11,8 +11,8 @@ export const addToFavorites = createAsyncThunk("addToFavorites", async (payload)
   const { data } = await instance.post("/favorites",payload)
   return data;
 })
-export const removeFavorites = createAsyncThunk("removeFavorites",async (payload) => {
-  const {data} = await instance.delete("/favorites",payload)
+export const removeFavorites = createAsyncThunk("removeFavorites",async (id) => {
+  const {data} = await instance.delete(`/favorites/${id}`)
   return data;
 })
 
