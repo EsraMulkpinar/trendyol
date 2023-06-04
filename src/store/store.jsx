@@ -4,6 +4,7 @@ import merchantsReducer from '../reducers/merchantsReducer'
 import productsReducer from '../reducers/productsReducer'
 import authReducer from '../reducers/authReducer'
 import favoritesReducer from '../reducers/favoritesReducer'
+import basketReducer from '../reducers/basketReducer'
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     merchants:merchantsReducer,
     products:productsReducer,
     auth:authReducer,
-    favorites:favoritesReducer
+    favorites:favoritesReducer,
+    basket: basketReducer
   },
 })
