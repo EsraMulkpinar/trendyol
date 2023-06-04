@@ -20,6 +20,9 @@ function App() {
             <Header />
           </header>
           <Switch>
+            <Route path="/category/:id">
+              <CategoryProduct />
+            </Route>
             <Route path="/category">
               <CategoryProduct />
             </Route>
@@ -29,6 +32,7 @@ function App() {
             <Route path="/merchant/:id">
               <MerchantProduct />
             </Route>
+
             <Route path="/signin">
               <RegisterPage />
             </Route>

@@ -6,7 +6,6 @@ import { logout } from "../../reducers/authReducer";
 
 const LoginSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log(localStorage.getItem("token"));
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -15,7 +14,7 @@ const LoginSection = () => {
     dispatch(logout())
     toggleMenu()
   }
-
+  const token = localStorage.getItem("token")
 
   return (
     <div className="flex space-x-8">
@@ -27,11 +26,11 @@ const LoginSection = () => {
           <AiOutlineUser className="group-hover:fill-primaryColor" />
 
           <div className="group-hover:text-primaryColor">
-            {localStorage.getItem("token") ? "Hesabım" : "Giriş Yap"}
+            {token ? "Hesabım" : "Giriş Yap"}
           </div>
         </button>
        {isMenuOpen?<div className="">
-       { localStorage.getItem("token") ? (
+       { token ? (
           <div className="absolute top-16 -ml-24 my-2 bg-white rounded border p-4 z-20">
             <ul className="list-none">
               <Link to="/login" >

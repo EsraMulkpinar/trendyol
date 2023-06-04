@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 const CategoryCard = ({ categorie, isOpen }) => {
   return (
     <div className="max-w-[1200px] mx-auto">
@@ -14,13 +16,15 @@ const CategoryCard = ({ categorie, isOpen }) => {
       {isOpen && (
         <ul className="absolute left-0 top-full text-gray-700 pt-1  w-[1200px] h-[350px]  rounded-lg  bg-white z-20 border shadow-md shadow-shadowColor inset-5">
           {
-            categorie.sub_categories.map((sub_category,index) => <li className="">
-              <a key={index}
+            categorie.sub_categories.map((category,index) => <li className="" key={index}>
+              <Link to={`/category/${category.id}`}>
+              <button 
                 className="rounded-t hover:text-primaryColor hover:underline py-2 px-4 block whitespace-no-wrap text-start"
                 href="/"
               >
-                {sub_category.name}
-              </a>
+                {category.name}
+              </button>
+              </Link>
             </li>)
           }
         </ul>
