@@ -33,7 +33,7 @@ const authReducer = createSlice({
       localStorage.setItem("token", action.payload.token);
     });
     addCase(logout.fulfilled,() => {
-      alert("sadfdg")
+      alert("Çıkış Yapıldı")
       localStorage.removeItem("token")
     })
   },
