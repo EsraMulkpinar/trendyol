@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { SlBasket } from 'react-icons/sl';
-import { BsTrash } from 'react-icons/bs';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBasket } from '../reducers/basketReducer';
@@ -13,6 +12,7 @@ const BasketPage = () => {
   const [parent] = useAutoAnimate()
   const { basket,totalBasket } = useSelector(state => state.basket)
   const [totalQuantity, settotalQuantity] = useState(0)
+  const [totalPrice, settotalPrice] = useState(0)
 
   const paymentPagePush = () => {
     history.push("/payment")
@@ -24,11 +24,16 @@ const BasketPage = () => {
 
   useEffect(() => {
     let count = 0
+    let totalPrice = 0
     totalBasket.forEach(basket => {
       count += basket.quantity
+      totalPrice += Number(basket.product.price) * basket.quantity
     });
     settotalQuantity(count)
+    settotalPrice(totalPrice)
   }, [totalBasket])
+
+  console.log(totalBasket)
   
 
   return (
@@ -49,10 +54,10 @@ const BasketPage = () => {
         <div className="w-1/4 mx-5 flex flex-col justify-between text-start mt-2">
           <div className="border rounded-lg p-5 flex flex-col justify-between">
             <div className="text-xl my-4">Sipariş Özeti</div>
-            <div className="flex justify-between"><span>Ürünün Toplamı </span><span>200 TL</span></div>
+            <div className="flex justify-between"><span>Ürünün Toplamı </span><span>{totalPrice} TL</span></div>
             <div className="flex justify-between"><span>Kargo Toplam </span><span>19,99 TL</span></div>
             <hr className='my-2' />
-            <div className="flex justify-between"><span>Toplam </span><span>219,99 TL</span></div>
+            <div className="flex justify-between"><span>Toplam </span><span>{parseFloat(totalPrice + 19.99).toFixed(2)} TL</span></div>
             <button className='w-full py-3 my-3 rounded-md bg-primaryColor text-white font-bold text-lg' onClick={paymentPagePush}>Sepeti Onayla</button>
           </div>
         </div>

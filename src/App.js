@@ -11,53 +11,55 @@ import Products from "./pages/Products";
 import BasketPage from "./pages/BasketPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import PaymentPage from "./pages/PaymentPage";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div className="App ">
-      <Router>
-        <div className="App">
-          <header>
-            <Header />
-          </header>
-          <Switch>
-            <Route path="/category/:id">
-              <CategoryProduct />
-            </Route>
-            <Route path="/category">
-              <CategoryProduct />
-            </Route>
-            <Route path="/products">
-              <Products />
-            </Route>
-            <Route path="/merchant/:id">
-              <MerchantProduct />
-            </Route>
-
-            <Route path="/signin">
-              <RegisterPage />
-            </Route>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <Route path="/basket">
-              <BasketPage />
-            </Route>
-            <Route path="/favorites">
-              <FavoritesPage />
-            </Route>
-            <Route path="/payment">
-              <PaymentPage />
-            </Route>
-            <Route path="/">
-              <HomePage />
-            </Route>
-          </Switch>
-          <footer>
-            <Footer />
-          </footer>
-        </div>
-      </Router>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <Header />
+        </header>
+        <Switch>
+          <Route path="/category/:id">
+            <CategoryProduct />
+          </Route>
+          <Route path="/category">
+            <CategoryProduct />
+          </Route>
+          <Route path="/products">
+            <Products />
+          </Route>
+          <Route path="/merchant/:id">
+            <MerchantProduct />
+          </Route>
+          <Route path="/signin">
+            <RegisterPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/basket">
+            <BasketPage />
+          </Route>
+          <Route path="/favorites">
+            <FavoritesPage />
+          </Route>
+          <Route path="/payment">
+            <PaymentPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+    </Router>
+    <ToastContainer />
+  </div>
   );
 }
 
